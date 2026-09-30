@@ -1,4 +1,4 @@
-# Planet ExCode — standalone Vercel prototype
+# Planet ExCode - first prototype
 
 This package contains the mission map, Day/Night toggle, and activity chooser. It is separate from CoordinatePlaneLearningActivity. No game or lesson has been copied into it.
 
