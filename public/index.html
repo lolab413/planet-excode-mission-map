@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Planet ExCode — Mission map</title>
+  <meta name="description" content="Your next adventure begins on Planet ExCode. Explore the mission map and launch your coordinate plane mission.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%230e2733'/%3E%3Ccircle cx='16' cy='16' r='8' fill='%236ee2cc'/%3E%3Cellipse cx='16' cy='16' rx='14' ry='4' transform='rotate(-30 16 16)' fill='none' stroke='%23ffdf9a' stroke-width='2'/%3E%3C/svg%3E">
+  <script src="theme.js"></script>
+  <link rel="stylesheet" href="styles.css">
+  <script src="mission-config.js" defer></script><script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="./" aria-label="Planet ExCode home"><span class="brand-icon" aria-hidden="true">✦</span> PLANET <strong>EXCODE</strong></a><span class="nav-label">EXPLORER’S MISSION MAP</span><div class="header-actions"><span class="planet-label">SECTOR 01 <span aria-hidden="true">✧</span></span><button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to day mode" title="Switch to day mode"><span aria-hidden="true">&#9728;</span></button></div></header>
+  <main>
+    <section class="intro" aria-labelledby="page-title"><div class="eyebrow">A NEW WORLD OF DISCOVERY</div><h1 id="page-title">Small steps.<br><em>Stellar discoveries.</em></h1><p>Every mission is a new way to see the world.<br>Your journey begins with a single coordinate.</p></section>
+    <section class="world" aria-label="Planet ExCode mission path">
+      <img class="landscape" src="assets/mountains.png" alt="" width="1536" height="1024">
+      <div class="map-caption"><span class="tiny-cross" aria-hidden="true">+</span> THE DISCOVERY TRAIL <span class="caption-line"></span></div>
+      <ol class="missions" aria-label="Missions in journey order">
+        <li class="mission current" style="--x:47.9%;--y:86.6%"><button type="button" class="marker" aria-label="Mission 1" data-mission-open aria-haspopup="dialog" aria-controls="mission-dialog">01</button><div class="mission-card"><div class="eyebrow">YOUR FIRST MISSION</div><h2>Find your coordinates</h2><p>Get your bearings. Explore the coordinate plane and find your place on the map.</p><button type="button" id="mission-start" class="start" data-mission-open aria-haspopup="dialog" aria-controls="mission-dialog">Start Mission 1</button><span id="link-status" class="link-status">Launch link coming soon</span></div></li>
+        <li class="mission" style="--x:47.6%;--y:74.8%"><span class="marker">02</span><div class="mission-label"><h2>Mission 2</h2><span>Coming soon</span></div></li>
+        <li class="mission" style="--x:32.5%;--y:71.4%"><span class="marker">03</span><div class="mission-label"><h2>Mission 3</h2><span>Coming soon</span></div></li>
+        <li class="mission" style="--x:21.4%;--y:64.1%"><span class="marker">04</span><div class="mission-label"><h2>Mission 4</h2><span>Coming soon</span></div></li>
+        <li class="mission" style="--x:34.8%;--y:56.3%"><span class="marker">05</span><div class="mission-label"><h2>Mission 5</h2><span>Coming soon</span></div></li>
+        <li class="mission" style="--x:47.7%;--y:59.4%"><span class="marker">06</span><div class="mission-label"><h2>Mission 6</h2><span>Coming soon</span></div></li>
+        <li class="mission" style="--x:60.5%;--y:63.0%"><span class="marker">07</span><div class="mission-label"><h2>Mission 7</h2><span>Coming soon</span></div></li>
+        <li class="mission" style="--x:74.9%;--y:62.2%"><span class="marker">08</span><div class="mission-label"><h2>Mission 8</h2><span>Coming soon</span></div></li>
+        <li class="mission" style="--x:69.6%;--y:48.9%"><span class="marker">09</span><div class="mission-label"><h2>Mission 9</h2><span>Coming soon</span></div></li>
+        <li class="mission" style="--x:58.5%;--y:43.0%"><span class="marker">10</span><div class="mission-label"><h2>Mission 10</h2><span>Coming soon</span></div></li>
+        <li class="mission" style="--x:42.7%;--y:37.4%"><span class="marker">11</span><div class="mission-label"><h2>Mission 11</h2><span>Coming soon</span></div></li>
+      </ol>
+      <div class="map-key"><span class="key-ring"></span> YOUR NEXT MISSION <span class="key-dot"></span> COMING SOON</div>
+    </section>
+  </main>
+  <dialog id="mission-dialog" class="mission-dialog activity-choice" aria-labelledby="mission-dialog-title">
+    <div class="choice-heading"><div><div class="eyebrow">YOUR FIRST MISSION</div><h2 id="mission-dialog-title">Mission 1</h2></div><button type="button" class="close-choice" id="mission-close" autofocus>Close</button></div>
+    <div class="activity-grid">
+      <article class="activity-card" aria-labelledby="coordinate-title">
+        <span class="activity-type">COORDINATE PLANE</span>
+        <h3 id="coordinate-title"></h3><p id="coordinate-description"></p>
+        <button type="button" class="start activity-play" data-activity="coordinateActivityUrl" aria-label="Play Find your coordinates" aria-describedby="coordinate-status" disabled>Play</button>
+        <span class="activity-status" id="coordinate-status">Activity link coming soon</span>
+      </article>
+      <article class="activity-card" aria-labelledby="word-search-title">
+        <span class="activity-type">WORD SEARCH</span>
+        <h3 id="word-search-title">System Reboot: Core Concepts</h3>
+        <p>Find the words needed to help reboot Exi.</p>
+        <button type="button" class="start activity-play" data-activity="wordSearchUrl" aria-label="Play System Reboot: Core Concepts" aria-describedby="word-search-status" disabled>Play</button>
+        <span class="activity-status" id="word-search-status">Activity link coming soon</span>
+      </article>
+    </div>
+  </dialog>
+  <footer><span>PLANET EXCODE</span><p>A little curiosity goes a long way.</p><span>KEEP EXPLORING <span aria-hidden="true">✦</span></span></footer>
+</body>
+</html>
+
+
