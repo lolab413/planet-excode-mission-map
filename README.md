@@ -4,16 +4,17 @@ This package contains the mission map, Day/Night toggle, and activity chooser. I
 
 ## GitHub repository
 
-Prepared target: `lolab413/planet-excode-mission-map`, branch `main`.
-This repository has NOT been created or uploaded by this preparation task. No existing matching repository was found among the accessible GitHub repositories. Do not import `CoordinatePlaneLearningActivity` for this map.
+Repository: `https://github.com/lolab413/planet-excode-mission-map`, production branch `main`.
 
-Create a new repository with that name (private is fine), and put the CONTENTS of this folder at its root. Include `public/`, `scripts/`, `package.json`, `package-lock.json`, `vercel.json`, `.gitignore`, and this README. Do not upload the parent folder or generated `dist/` as a nested project. The GitHub account connecting to Vercel must have access to the repository.
+Edit `public/index.html`, `public/styles.css`, `public/app.js`, `public/theme.js`, and `public/mission-config.js`. These are the exact source files copied into `dist/` by `npm run build` and served by Vercel. Do not edit generated `dist/` or the older Sites/export copies. Commit source and configuration; generated output is ignored.
+
+This checkout tracks `origin/main`. Use `git pull --ff-only` before changes, run `npm run build`, commit, and push to `origin main`. Keep `vercel.json`, package files, and the build script intact unless intentionally changing deployment. The GitHub integration in Codex is already connected; its write API can commit updates. A terminal Git push uses separate local credentials: if Git Credential Manager prompts, choose browser sign-in and authenticate as `lolab413`. Never put a token in the remote URL. GitHub sign-in for editing does not add a visitor login requirement to the website.
 
 ## Exact Vercel import settings
 
 | Setting | Value |
 | --- | --- |
-| Repository | `lolab413/planet-excode-mission-map` (create/upload first) |
+| Repository | `lolab413/planet-excode-mission-map` |
 | Production branch | `main` |
 | Project name | `planet-excode-mission-map` |
 | Framework preset | Other |
