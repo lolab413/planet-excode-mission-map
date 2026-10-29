@@ -49,14 +49,19 @@
   }
   // Keep each game's destination independent; empty or unsafe URLs cannot navigate.
   document.querySelectorAll('[data-activity]').forEach(button => {
-    if (button === coordinateButton && coordinateComplete) return;
     const value = window.PLANET_EXCODE_CONFIG?.[button.dataset.activity];
     if (typeof value !== 'string' || !value.trim()) return;
     try {
       const url = new URL(value.trim());
       if (!['http:', 'https:'].includes(url.protocol) || url.username || url.password) return;
       button.disabled = false;
-      document.getElementById(button.getAttribute('aria-describedby')).hidden = true;
+      if (button === coordinateButton && coordinateComplete) {
+        button.textContent = 'Completed · Play again';
+        button.setAttribute('aria-label', 'Play Find your coordinates again — completed');
+        document.getElementById('coordinate-status').textContent = 'Completion saved. Play again anytime.';
+      } else {
+        document.getElementById(button.getAttribute('aria-describedby')).hidden = true;
+      }
       button.addEventListener('click', () => {
         if (button === coordinateButton) {
           const attempt = crypto.randomUUID();
@@ -83,5 +88,6 @@
   }
   // Native dialog handles Escape and contains keyboard focus.
 })();
+
 
 
