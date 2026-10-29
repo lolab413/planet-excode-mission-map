@@ -57,6 +57,7 @@
       button.disabled = false;
       if (button === coordinateButton && coordinateComplete) {
         button.textContent = 'Completed · Play again';
+        button.setAttribute('data-completed', 'true');
         button.setAttribute('aria-label', 'Play Find your coordinates again — completed');
         document.getElementById('coordinate-status').textContent = 'Completion saved. Play again anytime.';
       } else {
