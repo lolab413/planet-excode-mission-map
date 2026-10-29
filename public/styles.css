@@ -56,3 +56,21 @@ button.activity-play:disabled{background:#405b61;color:#d4dfe0;cursor:not-allowe
 [data-theme=day] .map-key{color:#163c43}
 [data-theme=day] .key-ring{border-color:#163c43}}
 .theme-toggle{width:44px;height:44px;min-height:44px;padding:0;display:grid;place-items:center;border-radius:50%;font-size:25px;line-height:1}.theme-toggle span{display:block;line-height:1}
+
+/* Earned completion stays visibly green while the activity remains replayable. */
+button.activity-play[data-completed=true]:not(:disabled){
+  background:#86efac;color:#103c2a;border:1px solid #bbf7d0;
+  box-shadow:0 0 0 2px #4ade8033,0 0 18px #4ade8059;
+  transition:background .15s,box-shadow .15s,transform .15s;
+}
+button.activity-play[data-completed=true]:not(:disabled):hover{
+  background:#a7f3c0;box-shadow:0 0 0 2px #4ade8055,0 0 26px #4ade8080;
+}
+button.activity-play[data-completed=true]:not(:disabled):focus-visible{
+  outline:3px solid var(--mint);outline-offset:5px;
+  box-shadow:0 0 0 2px #4ade8055,0 0 26px #4ade8080;
+}
+@media(prefers-reduced-motion:reduce){
+  button.activity-play[data-completed=true]:not(:disabled){transition:none;transform:none}
+}
+
