@@ -74,3 +74,12 @@ button.activity-play[data-completed=true]:not(:disabled):focus-visible{
   button.activity-play[data-completed=true]:not(:disabled){transition:none;transform:none}
 }
 
+
+/* Empty status messages should not leave a gap below the mission button. */
+.link-status:empty{display:none}
+
+/* Label the native word search as a game with a compact controller emblem. */
+.activity-labels{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.game-emblem{display:inline-flex;align-items:center;gap:7px;padding:5px 10px;border:1px solid #7ae7cf80;border-radius:20px;background:#7ae7cf12;color:var(--mint);font:600 11px 'Space Grotesk',sans-serif;letter-spacing:.6px}
+.game-emblem svg{flex-shrink:0}
+[data-theme=day] .game-emblem{border-color:#09645e66;background:#09645e0d}

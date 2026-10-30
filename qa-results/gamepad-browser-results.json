@@ -1,0 +1,25 @@
+{
+  "type": "Browser-integrated simulation with mocked standard Gamepad API",
+  "physicalHardware": "not tested",
+  "inactiveBrowserTab": {
+    "hidden": false,
+    "focused": false,
+    "reads": 61
+  },
+  "status": "passed",
+  "recoveredWords": [
+    "SYSTEM",
+    "LOGIC",
+    "DATA"
+  ],
+  "pageErrors": [],
+  "checks": [
+    "No reads while disabled",
+    "Real grid navigation and focus cue via mocked D-pad",
+    "Primary/Back route through real keyboard handlers",
+    "Controller-to-keyboard-to-touch-to-mouse recovery on one board",
+    "Disconnect/reconnect preserves pending selection and stops reads",
+    "Inactive tab stops reads",
+    "Mode off stops reads"
+  ]
+}

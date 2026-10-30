@@ -32,6 +32,7 @@ import { ACTIVITY_ID, PROGRESS_KEY, COMPLETION_KEY, CONCEPTS, createBoard, lineB
   function focusCell(index) {
     cells.forEach((cell, i) => cell.tabIndex = i === index ? 0 : -1);
     cells[index].focus();
+    cells[index].scrollIntoView?.({ block: 'nearest', inline: 'nearest' });
   }
   function sound(celebrate = false) {
     if (!soundEnabled) return;
@@ -63,11 +64,31 @@ import { ACTIVITY_ID, PROGRESS_KEY, COMPLETION_KEY, CONCEPTS, createBoard, lineB
   syncSound();
   function clearSelection() {
     anchor = null;
-    cells.forEach(cell => { cell.classList.remove('selected', 'hint'); cell.setAttribute('aria-selected', 'false'); });
+    cells.forEach(cell => { cell.classList.remove('selected', 'selection-start', 'hint'); cell.setAttribute('aria-selected', 'false'); });
+    $('selection-status').textContent = '';
+    updateCellLabels();
   }
   function preview(end) {
     const selected = path(anchor, end);
-    cells.forEach((cell, i) => { cell.classList.toggle('selected', selected.includes(i)); cell.setAttribute('aria-selected', String(selected.includes(i))); });
+    cells.forEach((cell, i) => {
+      const included = selected.includes(i) || i === anchor;
+      cell.classList.toggle('selected', included); cell.classList.toggle('selection-start', i === anchor);
+      cell.setAttribute('aria-selected', String(included));
+    });
+    updateCellLabels();
+    if (end !== anchor && document.documentElement.hasAttribute('data-access-selection')) {
+      const message = selected.length ? `${selected.map(i => cells[i].textContent).join(' ')}. ${selected.length} letters selected.` : 'Not a straight line. Choose an endpoint in the same row, column, or diagonal.';
+      if ($('selection-status').textContent !== message) $('selection-status').textContent = message;
+    } else $('selection-status').textContent = '';
+  }
+  function updateCellLabels() {
+    cells.forEach((cell, i) => {
+      const recovered = [...found].filter(word => solutions[word].includes(i));
+      cell.setAttribute('aria-label', `${cell.textContent}, row ${Math.floor(i / 10) + 1}, column ${i % 10 + 1}${i === anchor ? '; starting letter' : ''}${recovered.length ? `; recovered: ${recovered.join(', ')}` : ''}`);
+    });
+  }
+  function startingMessage() {
+    return `Start: ${cells[anchor].textContent}, row ${Math.floor(anchor / 10) + 1}, column ${anchor % 10 + 1}. Choose the last letter.`;
   }
   function render() {
     cells.forEach(cell => cell.classList.remove('found'));
@@ -83,12 +104,9 @@ import { ACTIVITY_ID, PROGRESS_KEY, COMPLETION_KEY, CONCEPTS, createBoard, lineB
       }
       $('words').append(item);
     });
-    cells.forEach((cell, i) => {
-      const recovered = [...found].filter(word => solutions[word].includes(i));
-      cell.setAttribute('aria-label', `${cell.textContent}, row ${Math.floor(i / 10) + 1}, column ${i % 10 + 1}${recovered.length ? `; recovered: ${recovered.join(', ')}` : ''}`);
-    });
+    updateCellLabels();
     $('count').textContent = `${found.size} / 6 RECOVERED`; $('progress').value = found.size;
-    $('complete').hidden = found.size !== 6; $('hint').disabled = found.size === 6;
+    $('hint').disabled = found.size === 6;
     $('completion-status').textContent = completed ? 'Mission completed · Replay keeps your achievement.' : 'Recover all six concepts to reboot Exi.';
   }
   function save() {
@@ -106,13 +124,14 @@ import { ACTIVITY_ID, PROGRESS_KEY, COMPLETION_KEY, CONCEPTS, createBoard, lineB
     found.add(word);
     if (found.size === 6) completed = true;
     save(); render(); sound(found.size === 6);
+    if (found.size === 6 && !$('complete').open) $('complete').showModal();
     solutions[word].forEach(i => { cells[i].classList.remove('discovered'); void cells[i].offsetWidth; cells[i].classList.add('discovered'); });
     $('discovery').textContent = `${word} recovered! ${concepts[word]}`;
-    $('feedback').textContent = found.size === 6 ? 'All six concepts recovered. Exi is back online!' : `${found.size} of 6 concepts restored. Keep exploring!`;
+    $('feedback').textContent = found.size === 6 ? `${word} recovered. All six concepts recovered. Exi is back online!` : `${word} recovered. ${found.size} of 6 concepts restored.`;
     if (!storageAvailable) $('feedback').textContent += ' Progress is available for this visit; browser storage is unavailable.';
   }
   function choose(index) {
-    if (anchor === null) { clearSelection(); anchor = index; preview(index); $('feedback').textContent = 'Starting letter selected. Choose the last letter.'; }
+    if (anchor === null) { clearSelection(); anchor = index; preview(index); $('feedback').textContent = startingMessage(); }
     else if (anchor === index) { clearSelection(); $('feedback').textContent = 'Selection cleared. Choose a new starting letter.'; }
     else finish(index);
   }
@@ -141,7 +160,7 @@ import { ACTIVITY_ID, PROGRESS_KEY, COMPLETION_KEY, CONCEPTS, createBoard, lineB
     ignoreClick = true;
     if (moved && cell && grid.contains(cell)) finish(Number(cell.dataset.index));
     else if (moved) clearSelection();
-    else $('feedback').textContent = 'Starting letter selected. Choose the last letter.';
+    else $('feedback').textContent = startingMessage();
   });
   window.addEventListener('pointercancel', event => {
     if (!dragging || event.pointerId !== pointerId) return;
@@ -151,26 +170,33 @@ import { ACTIVITY_ID, PROGRESS_KEY, COMPLETION_KEY, CONCEPTS, createBoard, lineB
   grid.addEventListener('keydown', event => {
     const cell = event.target.closest('.cell'); if (!cell) return;
     const index = Number(cell.dataset.index), r = Math.floor(index / 10), c = index % 10;
-    const targets = { ArrowLeft: r * 10 + Math.max(0, c - 1), ArrowRight: r * 10 + Math.min(9, c + 1), ArrowUp: Math.max(0, r - 1) * 10 + c, ArrowDown: Math.min(9, r + 1) * 10 + c };
+    const targets = { Home: event.ctrlKey ? 0 : r * 10, End: event.ctrlKey ? 99 : r * 10 + 9, ArrowLeft: r * 10 + Math.max(0, c - 1), ArrowRight: r * 10 + Math.min(9, c + 1), ArrowUp: Math.max(0, r - 1) * 10 + c, ArrowDown: Math.min(9, r + 1) * 10 + c };
     if (Object.hasOwn(targets, event.key)) { event.preventDefault(); focusCell(targets[event.key]); if (anchor !== null) preview(targets[event.key]); }
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
       if (!event.repeat) choose(index);
     }
-    if (event.key === 'Escape') { event.preventDefault(); clearSelection(); $('feedback').textContent = 'Selection cleared.'; }
+    if (event.key === 'Escape') {
+      event.preventDefault(); dragging = false; pointerId = null; moved = false; ignoreClick = true;
+      clearSelection(); $('feedback').textContent = 'Selection cleared.';
+    }
   });
   $('hint').addEventListener('click', () => {
     clearSelection(); const word = Object.keys(concepts).find(candidate => !found.has(candidate)); if (!word) return;
-    const index = solutions[word][0]; cells[index].classList.add('hint');
+    const index = solutions[word][0]; cells[index].classList.add('hint'); focusCell(index);
     $('feedback').textContent = `${word} starts at row ${Math.floor(index / 10) + 1}, column ${index % 10 + 1}. Its starting letter is outlined.`;
   });
   $('start').textContent = found.size === 6 ? 'View completed reboot →' : found.size ? 'Resume system recovery →' : 'Start system reboot →';
   $('saved-note').textContent = storageAvailable ? (found.size ? `${found.size} of 6 concepts saved on this browser.` : 'Your progress saves automatically on this browser.') : 'Browser storage is unavailable. You can still play this visit.';
-  $('start').addEventListener('click', () => { $('briefing').hidden = true; $('game').hidden = false; $('game-title').focus(); });
+  $('start').addEventListener('click', () => {
+    $('briefing').hidden = true; $('game').hidden = false; $('game-title').focus();
+    if (found.size === 6 && !$('complete').open) $('complete').showModal();
+  });
   const restartDialog = $('restart-dialog');
   $('restart').addEventListener('click', () => restartDialog.showModal());
   $('cancel-restart').addEventListener('click', () => restartDialog.close());
   function reset() {
+    if ($('complete').open) $('complete').close();
     found.clear(); clearSelection(); board = createBoard(); solutions = board.solutions;
     cells.forEach((cell, i) => {
       cell.textContent = board.letters[i]; cell.classList.remove('discovered');
@@ -181,6 +207,8 @@ import { ACTIVITY_ID, PROGRESS_KEY, COMPLETION_KEY, CONCEPTS, createBoard, lineB
   }
   $('confirm-restart').addEventListener('click', () => { restartDialog.close(); reset(); });
   $('replay').addEventListener('click', reset);
+  $('close-complete').addEventListener('click', () => $('complete').close());
+  $('complete').addEventListener('close', () => { if (found.size === 6) focusCell(cells.findIndex(cell => cell.tabIndex === 0)); });
   $('help').addEventListener('click', () => {
     const open = $('help-panel').hidden;
     $('help-panel').hidden = !open; $('help').setAttribute('aria-expanded', String(open));

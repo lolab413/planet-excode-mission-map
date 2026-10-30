@@ -1,0 +1,334 @@
+{
+  "browser": "isolated Chrome via Playwright",
+  "hardwareController": "not tested",
+  "zoom": "200% CSS zoom simulation; not native browser zoom",
+  "compliance": "No universal controller compatibility or accessibility compliance claim.",
+  "results": [
+    {
+      "scenario": "desktop",
+      "status": "passed",
+      "inputs": "keyboard only; solution read as test oracle",
+      "observations": [
+        {
+          "viewport": {
+            "width": 1280,
+            "height": 900,
+            "dpr": 1,
+            "visualScale": 1
+          },
+          "pageOverflow": false,
+          "dialogOverflow": false,
+          "dialogFits": true,
+          "gridScrolls": false,
+          "scrollHeight": 1214
+        },
+        {
+          "viewport": {
+            "width": 1280,
+            "height": 900,
+            "dpr": 1,
+            "visualScale": 1
+          },
+          "pageOverflow": false,
+          "dialogOverflow": false,
+          "dialogFits": true,
+          "gridScrolls": false,
+          "scrollHeight": 1721
+        },
+        {
+          "viewport": {
+            "width": 1280,
+            "height": 900,
+            "dpr": 1,
+            "visualScale": 1
+          },
+          "pageOverflow": false,
+          "dialogOverflow": false,
+          "dialogFits": true,
+          "gridScrolls": false,
+          "scrollHeight": 1680
+        },
+        {
+          "viewport": {
+            "width": 1280,
+            "height": 900,
+            "dpr": 1,
+            "visualScale": 1
+          },
+          "pageOverflow": false,
+          "dialogOverflow": false,
+          "dialogFits": true,
+          "gridScrolls": false,
+          "scrollHeight": 388
+        }
+      ],
+      "motion": {
+        "requested": false,
+        "animations": 0
+      },
+      "pageErrors": []
+    },
+    {
+      "scenario": "mobile-320",
+      "status": "passed",
+      "inputs": "keyboard only; solution read as test oracle",
+      "observations": [
+        {
+          "viewport": {
+            "width": 320,
+            "height": 740,
+            "dpr": 1,
+            "visualScale": 1
+          },
+          "pageOverflow": false,
+          "dialogOverflow": false,
+          "dialogFits": true,
+          "gridScrolls": false,
+          "scrollHeight": 2258
+        },
+        {
+          "viewport": {
+            "width": 320,
+            "height": 740,
+            "dpr": 1,
+            "visualScale": 1
+          },
+          "pageOverflow": false,
+          "dialogOverflow": false,
+          "dialogFits": true,
+          "gridScrolls": true,
+          "scrollHeight": 2355
+        },
+        {
+          "viewport": {
+            "width": 320,
+            "height": 740,
+            "dpr": 1,
+            "visualScale": 1
+          },
+          "pageOverflow": false,
+          "dialogOverflow": false,
+          "dialogFits": true,
+          "gridScrolls": true,
+          "scrollHeight": 1427
+        },
+        {
+          "viewport": {
+            "width": 320,
+            "height": 740,
+            "dpr": 1,
+            "visualScale": 1
+          },
+          "pageOverflow": false,
+          "dialogOverflow": false,
+          "dialogFits": true,
+          "gridScrolls": true,
+          "scrollHeight": 540
+        }
+      ],
+      "motion": {
+        "requested": false,
+        "animations": 0
+      },
+      "pageErrors": []
+    },
+    {
+      "scenario": "mobile-390",
+      "status": "passed",
+      "inputs": "keyboard only; solution read as test oracle",
+      "observations": [
+        {
+          "viewport": {
+            "width": 390,
+            "height": 844,
+            "dpr": 1,
+            "visualScale": 1
+          },
+          "pageOverflow": false,
+          "dialogOverflow": false,
+          "dialogFits": true,
+          "gridScrolls": false,
+          "scrollHeight": 2080
+        },
+        {
+          "viewport": {
+            "width": 390,
+            "height": 844,
+            "dpr": 1,
+            "visualScale": 1
+          },
+          "pageOverflow": false,
+          "dialogOverflow": false,
+          "dialogFits": true,
+          "gridScrolls": true,
+          "scrollHeight": 1965
+        },
+        {
+          "viewport": {
+            "width": 390,
+            "height": 844,
+            "dpr": 1,
+            "visualScale": 1
+          },
+          "pageOverflow": false,
+          "dialogOverflow": false,
+          "dialogFits": true,
+          "gridScrolls": true,
+          "scrollHeight": 1329
+        },
+        {
+          "viewport": {
+            "width": 390,
+            "height": 844,
+            "dpr": 1,
+            "visualScale": 1
+          },
+          "pageOverflow": false,
+          "dialogOverflow": false,
+          "dialogFits": true,
+          "gridScrolls": true,
+          "scrollHeight": 479
+        }
+      ],
+      "motion": {
+        "requested": false,
+        "animations": 0
+      },
+      "pageErrors": []
+    },
+    {
+      "scenario": "css-zoom-200",
+      "status": "failed",
+      "error": "AssertionError [ERR_ASSERTION]: css-zoom-200-map: document horizontal overflow\n\ntrue !== false\n\n    at layout (file:///C:/Users/bunny/Projects/ExplorationCode/scripts/test-browser-journey.mjs:72:10)\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at process.processImmediate (node:internal/timers:453:9)\n    at process.callbackTrampoline (node:internal/async_hooks:130:17)\n    at async runJourney (file:///C:/Users/bunny/Projects/ExplorationCode/scripts/test-browser-journey.mjs:88:23)\n    at async file:///C:/Users/bunny/Projects/ExplorationCode/scripts/test-browser-journey.mjs:180:11",
+      "pageErrors": []
+    },
+    {
+      "scenario": "optional-reduced-motion",
+      "status": "passed",
+      "inputs": "keyboard only; solution read as test oracle",
+      "observations": [
+        {
+          "viewport": {
+            "width": 1280,
+            "height": 900,
+            "dpr": 1,
+            "visualScale": 1
+          },
+          "pageOverflow": false,
+          "dialogOverflow": false,
+          "dialogFits": true,
+          "gridScrolls": false,
+          "scrollHeight": 1214
+        },
+        {
+          "viewport": {
+            "width": 1280,
+            "height": 900,
+            "dpr": 1,
+            "visualScale": 1
+          },
+          "pageOverflow": false,
+          "dialogOverflow": false,
+          "dialogFits": true,
+          "gridScrolls": false,
+          "scrollHeight": 1721
+        },
+        {
+          "viewport": {
+            "width": 1280,
+            "height": 900,
+            "dpr": 1,
+            "visualScale": 1
+          },
+          "pageOverflow": false,
+          "dialogOverflow": false,
+          "dialogFits": true,
+          "gridScrolls": false,
+          "scrollHeight": 1680
+        },
+        {
+          "viewport": {
+            "width": 1280,
+            "height": 900,
+            "dpr": 1,
+            "visualScale": 1
+          },
+          "pageOverflow": false,
+          "dialogOverflow": false,
+          "dialogFits": true,
+          "gridScrolls": false,
+          "scrollHeight": 388
+        }
+      ],
+      "motion": {
+        "requested": false,
+        "animations": 0
+      },
+      "pageErrors": []
+    },
+    {
+      "scenario": "reduced-motion",
+      "status": "passed",
+      "inputs": "keyboard only; solution read as test oracle",
+      "observations": [
+        {
+          "viewport": {
+            "width": 1280,
+            "height": 900,
+            "dpr": 1,
+            "visualScale": 1
+          },
+          "pageOverflow": false,
+          "dialogOverflow": false,
+          "dialogFits": true,
+          "gridScrolls": false,
+          "scrollHeight": 1214
+        },
+        {
+          "viewport": {
+            "width": 1280,
+            "height": 900,
+            "dpr": 1,
+            "visualScale": 1
+          },
+          "pageOverflow": false,
+          "dialogOverflow": false,
+          "dialogFits": true,
+          "gridScrolls": false,
+          "scrollHeight": 1721
+        },
+        {
+          "viewport": {
+            "width": 1280,
+            "height": 900,
+            "dpr": 1,
+            "visualScale": 1
+          },
+          "pageOverflow": false,
+          "dialogOverflow": false,
+          "dialogFits": true,
+          "gridScrolls": false,
+          "scrollHeight": 1680
+        },
+        {
+          "viewport": {
+            "width": 1280,
+            "height": 900,
+            "dpr": 1,
+            "visualScale": 1
+          },
+          "pageOverflow": false,
+          "dialogOverflow": false,
+          "dialogFits": true,
+          "gridScrolls": false,
+          "scrollHeight": 388
+        }
+      ],
+      "motion": {
+        "requested": true,
+        "animations": 0
+      },
+      "pageErrors": []
+    }
+  ]
+}

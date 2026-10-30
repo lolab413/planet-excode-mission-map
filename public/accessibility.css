@@ -1,0 +1,91 @@
+/* Defaults leave the existing palettes, sizing, and motion intact. */
+.skip-link{position:fixed;top:8px;left:8px;z-index:1000;transform:translateY(-180%);padding:12px 18px;background:#fff;color:#102d39;border:3px solid #102d39;border-radius:6px;font:700 16px sans-serif}
+.skip-link:focus{transform:none}
+.accessibility-button{font:600 12px 'DM Sans',sans-serif;min-height:44px;padding:10px 12px;border:1px solid #76adad;border-radius:9px;background:#173a46;color:#f8f3df;cursor:pointer}
+.accessibility-launcher{position:fixed;left:max(18px,env(safe-area-inset-left));bottom:max(18px,env(safe-area-inset-bottom));z-index:20;display:grid;place-items:center;width:54px;height:54px;min-height:54px;padding:10px;border:2px solid #7ae7cf;border-radius:50%;background:#102d39;color:#fff0cb;box-shadow:0 4px 18px #0006;cursor:pointer;touch-action:manipulation}
+.accessibility-launcher svg{display:block;flex-shrink:0}
+.accessibility-launcher:hover{background:#24515a}
+.accessibility-launcher:focus-visible{outline:3px solid #ffdf9a;outline-offset:4px}
+.accessibility-launcher-label{position:absolute;left:calc(100% + 12px);padding:6px 10px;border:1px solid #7ae7cf;border-radius:6px;background:#102d39;color:#fff0cb;font:600 14px/1.5 sans-serif;white-space:nowrap;pointer-events:none;opacity:0}
+.accessibility-launcher:hover .accessibility-launcher-label,.accessibility-launcher:focus-visible .accessibility-launcher-label{opacity:1}
+/* Reserve space at the end of scrolling pages so the launcher cannot hide footer links. */
+body:has(>.accessibility-launcher)>footer{padding-bottom:max(90px,calc(72px + env(safe-area-inset-bottom)))!important}
+/* The separate coordinate app uses an internally scrolling workspace. */
+body[data-activity=coordinate] .flight-shell{padding-bottom:100px}
+body[data-activity=coordinate] .plane-panel>div:last-child{padding-left:90px!important;min-height:90px!important}
+body[data-activity=coordinate] #mission-log-output{padding-bottom:90px!important}
+html[data-access-text] body[data-activity=coordinate] #root :is(p,label,button,select,input){font-size:18px!important;line-height:1.65!important}
+html[data-access-contrast] body[data-activity=coordinate] #root :is(main,header,nav,section,article,aside,div,span,p,h1,h2,h3,button,a,label,select,input,textarea){background-color:#000!important;background-image:none!important;color:#fff!important;border-color:#fff!important}
+html[data-access-contrast] body[data-activity=coordinate] #root svg{background:#000!important}
+html[data-access-contrast] body[data-activity=coordinate] #root svg text{fill:#fff!important}
+html[data-access-contrast] body[data-activity=coordinate] #root svg line{stroke:#aaa!important}
+html[data-access-contrast] body[data-activity=coordinate] #root svg :is(circle.point-glow,polygon[fill=none],path[fill=none]){stroke:#8fffe0!important}
+:where(a,button,input,select,textarea,summary):focus-visible{outline:3px solid var(--mint,#7ae7cf)!important;outline-offset:4px}
+[data-gamepad-focus]{outline:4px solid #ffdf9a!important;outline-offset:4px!important;box-shadow:0 0 0 7px #102d39!important}
+.accessibility-dialog{box-sizing:border-box;position:fixed;inset:0;margin:auto;width:min(540px,calc(100% - 32px));height:fit-content;max-height:calc(100dvh - 32px);overflow:auto;padding:26px;border:1px solid #7ae7cf;border-radius:16px;background:#12313d;color:#f8f3df;font:16px/1.6 'DM Sans',sans-serif}
+.accessibility-dialog::backdrop{background:#06151dcc}
+.accessibility-dialog h2{font-size:26px;line-height:1.25;margin:0 0 16px}
+.accessibility-dialog p{font-size:15px;color:inherit;letter-spacing:normal}
+.accessibility-dialog fieldset{min-width:0;margin:18px 0;padding:12px 16px 14px;border:1px solid #638d95;border-radius:10px}
+.accessibility-dialog legend{padding:0 6px;font-size:17px;font-weight:700;color:#7ae7cf}
+.accessibility-dialog fieldset p{font-size:13px;line-height:1.6;margin:8px 0 0}
+.accessibility-dialog fieldset ul{list-style:disc;padding-left:20px;margin:8px 0;font-size:14px;line-height:1.6}
+.accessibility-dialog fieldset li+li{margin-top:6px}
+.accessibility-options{display:grid;gap:8px;margin:0}
+.accessibility-options label{display:flex;align-items:center;gap:12px;min-height:44px;cursor:pointer}
+.accessibility-options input{appearance:auto;width:22px;height:22px;flex-shrink:0;accent-color:#7ae7cf}
+.accessibility-options .accessibility-spacing{display:grid;grid-template-columns:minmax(0,1fr) minmax(120px,1fr);gap:10px}
+.accessibility-options select{appearance:auto;width:100%;min-width:0;min-height:44px;padding:8px;border:1px solid #7fa6ac;border-radius:6px;background:#173a46;color:#fff;font:inherit}
+.accessibility-dialog summary{cursor:pointer;padding:8px 0}
+.accessibility-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+.accessibility-actions button{padding:12px 18px;min-height:44px;border:1px solid #7ae7cf;border-radius:8px;background:#173a46;color:#f8f3df;font:700 15px 'DM Sans',sans-serif;cursor:pointer}
+body:has(.accessibility-dialog[open]){overflow:hidden}
+html[data-access-motion] *,html[data-access-motion] *::before,html[data-access-motion] *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+html[data-access-focus] :focus{outline:4px solid #ffbf47!important;outline-offset:4px!important;box-shadow:0 0 0 8px #102d39!important}
+html[data-access-text] p,html[data-access-text] label,html[data-access-text] summary,html[data-access-text] button:not(.cell):not(.marker),html[data-access-text] .activity-status,html[data-access-text] .link-status,html[data-access-text] .small,html[data-access-text] .definition{font-size:18px;line-height:1.65}
+html[data-access-text] .concepts li{font-size:20px}
+/* Layout preferences change presentation only; every board still has ten columns. */
+.grid-viewport{min-width:0;max-width:100%;overflow:auto;padding:6px;scroll-padding:6px;overscroll-behavior-x:contain}
+html[data-access-letters]{--access-cell-size:38px}
+html[data-access-spacing-comfortable]{--access-grid-gap:6px;--access-diagram-size:550px}
+html[data-access-spacing-wide]{--access-grid-gap:10px;--access-diagram-size:660px}
+html[data-access-letters] .cell{font-size:24px;line-height:1.2}
+html:is([data-access-letters],[data-access-spacing-comfortable],[data-access-spacing-wide]) #grid{grid-template-columns:repeat(10,minmax(var(--access-cell-size,28px),1fr));gap:var(--access-grid-gap,3px);width:100%;min-width:calc(10 * var(--access-cell-size,28px) + 9 * var(--access-grid-gap,3px));margin:0}
+html:is([data-access-letters],[data-access-text]) body[data-activity=coordinate] #root .axis-label{font-size:15px!important}
+html[data-access-letters] body[data-activity=coordinate] #root :is(.flight-grid,.flight-visual) text{font-size:18px!important}
+html:is([data-access-spacing-comfortable],[data-access-spacing-wide]) body[data-activity=coordinate] .plane-canvas{overflow:auto!important;align-items:safe center!important;justify-content:safe center!important}
+html:is([data-access-spacing-comfortable],[data-access-spacing-wide]) body[data-activity=coordinate] .plane-canvas>div{flex-shrink:0;width:var(--access-diagram-size)!important;min-width:var(--access-diagram-size);max-width:none!important}
+html:is([data-access-spacing-comfortable],[data-access-spacing-wide]) body[data-activity=coordinate] .plane-canvas svg{flex-shrink:0;width:var(--access-diagram-size)!important;height:var(--access-diagram-size)!important;max-width:none!important;max-height:none!important}
+html:is([data-access-spacing-comfortable],[data-access-spacing-wide]) body[data-activity=coordinate] .flight-practice{overflow:auto}
+html:is([data-access-spacing-comfortable],[data-access-spacing-wide]) body[data-activity=coordinate] .flight-grid{width:var(--access-diagram-size);min-width:var(--access-diagram-size);max-width:none!important}
+html[data-access-contrast]{--mint:#8fffe0;--cream:#fff;--ink:#000;color-scheme:dark}
+html[data-access-contrast] body,html[data-access-contrast] dialog,html[data-access-contrast] .mission-card,html[data-access-contrast] .activity-card,html[data-access-contrast] .console,html[data-access-contrast] .help-panel{background:#000!important;color:#fff!important;border-color:#fff!important}
+html[data-access-contrast] :is(p,h1,h2,h3,span,a,label,legend,summary,.eyebrow,.mission-label,.difficulty,.console-top,.discovery){color:#fff!important;text-shadow:none!important}
+html[data-access-contrast] :is(button,.primary){background:#000!important;color:#fff!important;border:2px solid #fff!important}
+html[data-access-contrast] .cell.found{background:#8fffe0!important;color:#000!important;border-style:double!important;border-width:3px!important}
+html[data-access-contrast] .cell.selected{background:#ffdf9a!important;color:#000!important}
+html[data-access-contrast] .mission-label{background:#000;padding:4px;border-radius:4px}
+html[data-access-contrast] .marker{background:#000;color:#fff;border:2px solid #fff}
+html[data-access-contrast] :is(button,a,input,summary):focus-visible{outline-color:#ffdf9a!important}
+html[data-access-contrast] button:disabled{border-style:dashed!important;opacity:.65}
+@media(max-width:760px){.topbar{height:auto;min-height:76px;flex-wrap:wrap;padding:14px 0;gap:12px}.header-actions{flex-wrap:wrap;gap:12px}.header-controls{flex-wrap:wrap}}
+@media(max-width:1050px){
+  body:has(#game:not([hidden]))>.accessibility-launcher{bottom:calc(88px + env(safe-area-inset-bottom))}
+  html[data-access-text] body:has(#grid) header{flex-wrap:wrap}
+  html[data-access-text] body:has(#grid) .game-tools{position:static;display:flex;flex-wrap:wrap;padding:12px 0;box-shadow:none;border:0}
+  html[data-access-text] body:has(#grid)>.accessibility-launcher{bottom:max(18px,env(safe-area-inset-bottom))}
+  html[data-access-text] .concepts ul{grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr))}
+  html[data-access-text] .concepts .word-label{white-space:normal;overflow-wrap:anywhere}
+}
+@media(max-width:400px){.accessibility-dialog{padding:20px 16px}.accessibility-dialog fieldset{padding:10px}.accessibility-options .accessibility-spacing{grid-template-columns:1fr}.accessibility-actions>*{flex:1;min-width:0;white-space:normal}}
+/* Large text must be able to grow beyond the coordinate app's fixed desktop panels. */
+html[data-access-text] body[data-activity=coordinate] .mission-app{overflow:auto!important}
+html[data-access-text] body[data-activity=coordinate] .mission-workspace{flex:none!important;min-height:700px;overflow:visible!important}
+html[data-access-text] body[data-activity=coordinate] :is(.mission-strip,.plane-toolbar){flex-wrap:wrap}
+html[data-access-text] body[data-activity=coordinate] .mission-toggle{flex-wrap:wrap;white-space:normal}
+html[data-access-text] body[data-activity=coordinate] .mission-instructions{grid-template-columns:minmax(0,1fr)!important}
+html[data-access-text] body[data-activity=coordinate] #root textarea{font-size:18px!important;line-height:25.6px!important}
+html[data-access-text] body[data-activity=coordinate] .code-input>div>div{height:25.6px!important;line-height:25.6px!important}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media(forced-colors:active){.cell.found{border:3px double Highlight}.cell.selected{outline:3px solid Highlight}.cell:focus-visible{outline:3px solid CanvasText}}
+@media(forced-colors:active){[data-gamepad-focus]{outline:4px double CanvasText!important}}
