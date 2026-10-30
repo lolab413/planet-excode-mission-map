@@ -47,12 +47,14 @@
   if (!storageAvailable) {
     document.getElementById('coordinate-status').textContent = 'Browser storage is unavailable. Completion cannot be saved.';
   }
+  let wordSearchComplete = false;
+  try { wordSearchComplete = localStorage.getItem('planet-excode-word-search-completed-v1') === 'true'; } catch { /* Storage is optional. */ }
   // Keep each game's destination independent; empty or unsafe URLs cannot navigate.
   document.querySelectorAll('[data-activity]').forEach(button => {
     const value = window.PLANET_EXCODE_CONFIG?.[button.dataset.activity];
     if (typeof value !== 'string' || !value.trim()) return;
     try {
-      const url = new URL(value.trim());
+      const url = new URL(value.trim(), currentUrl);
       if (!['http:', 'https:'].includes(url.protocol) || url.username || url.password) return;
       button.disabled = false;
       if (button === coordinateButton && coordinateComplete) {
@@ -60,6 +62,11 @@
         button.setAttribute('data-completed', 'true');
         button.setAttribute('aria-label', 'Play Find your coordinates again — completed');
         document.getElementById('coordinate-status').textContent = 'Completion saved. Play again anytime.';
+      } else if (button.dataset.activity === 'wordSearchUrl' && wordSearchComplete) {
+        button.textContent = 'Completed \u00b7 Play again';
+        button.setAttribute('data-completed', 'true');
+        button.setAttribute('aria-label', 'Play System Reboot: Core Concepts again — completed');
+        document.getElementById('word-search-status').textContent = 'Completion saved. Play again anytime.';
       } else {
         document.getElementById(button.getAttribute('aria-describedby')).hidden = true;
       }

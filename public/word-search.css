@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+.header-controls{display:flex;align-items:center;gap:20px}.header-controls button{font-size:12px}.discovery{padding:15px 18px;min-height:78px;border-left:3px solid #7ae7cf;background:#7ae7cf0d;border-radius:0 8px 8px 0;font-size:14px;line-height:1.65;color:#e1f7ee}.help-button{position:fixed;bottom:22px;right:22px;z-index:5;background:#fff0cb;color:#102d39;border:1px solid #fff8e4;border-radius:30px;box-shadow:0 5px 25px #0005;font-size:22px}.help-button span{font-size:14px;margin-left:6px}.help-panel{position:fixed;bottom:90px;right:22px;z-index:6;width:min(370px,calc(100% - 44px));max-height:calc(100dvh - 120px);overflow:auto;background:#173a46;color:#f8f3df;border:1px solid #7ae7cf;border-radius:15px;padding:22px;box-shadow:0 12px 45px #0008}.help-panel p{font-size:14px}.help-heading{display:flex;align-items:center;gap:12px;justify-content:space-between}.help-heading h2{margin:0;font-size:20px}.help-heading button{font-size:22px;padding:5px 12px}.help-heading button:focus-visible{outline-offset:1px}footer{padding-bottom:100px!important}@keyframes discovery-glow{0%{box-shadow:inset 0 0 0 3px #fff0cb;filter:brightness(1.2)}100%{box-shadow:inset 0 0 0 0 transparent;filter:brightness(1)}}@keyframes reboot-online{from{opacity:.3;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}@media(prefers-reduced-motion:no-preference){.cell.discovered{animation:discovery-glow .75s ease-out}.complete:not([hidden]){animation:reboot-online .65s ease-out}progress::-webkit-progress-value{transition:width .45s ease}progress::-moz-progress-bar{transition:width .45s ease}}@media(max-width:700px){.header-controls{gap:10px;flex-wrap:wrap;justify-content:flex-end}.header-controls button{font-size:11px;min-height:38px;padding:8px}.help-button{bottom:14px;right:14px}.help-panel{right:14px;bottom:80px}.discovery{min-height:95px}}
+:root{color-scheme:dark;font-family:'DM Sans',sans-serif;color:#f8f3df;background:#091d29;--mint:#7ae7cf;--cream:#fff0cb}*{box-sizing:border-box}[hidden]{display:none!important}body{margin:0;background:radial-gradient(ellipse at 80% 30%,#224d5666,transparent 65%);min-height:100vh}a{color:inherit}header,footer{max-width:1440px;margin:auto;padding:26px 5%;display:flex;justify-content:space-between;align-items:center;gap:20px}header{border-bottom:1px solid #ffffff20;font-size:13px}header a{text-decoration:none}header>a:first-child{letter-spacing:2px}header>span,.eyebrow,.difficulty,.console-top{font:600 11px 'Space Grotesk',sans-serif;letter-spacing:2px;color:var(--mint)}main{max-width:1440px;margin:auto;padding:50px 5%}h1,h2,h3{font-family:'Space Grotesk',sans-serif}h1{font-size:clamp(34px,4vw,58px);letter-spacing:-2px;line-height:1.08;margin:12px 0 24px}h1 em{font-style:normal;color:var(--mint)}p{line-height:1.7;color:#bdcfd4}button,a.primary{font:700 14px 'DM Sans',sans-serif;cursor:pointer;border-radius:9px;min-height:46px;padding:12px 18px}.primary{background:var(--cream);color:#102d39;border:1px solid var(--cream);text-decoration:none;display:inline-flex;align-items:center;justify-content:center}.primary:hover{background:#ffe0a0}.secondary{background:#173a46;border:1px solid #729ba3;color:#f8f3df}.secondary:hover{background:#28515d}button:disabled{opacity:.5;cursor:default}:focus-visible{outline:3px solid var(--mint);outline-offset:4px}.briefing{max-width:710px;text-align:center;margin:15px auto 50px}.briefing h1{font-size:clamp(48px,7vw,88px)}.briefing>p:not(.eyebrow){max-width:580px;margin:20px auto}.subtitle{color:var(--mint);font-size:22px}.exi{font-size:65px;line-height:1.2;color:var(--mint)}.briefing .primary{margin-top:20px}.small{font-size:12px;color:#b5cbd0}.heading{display:flex;align-items:center;justify-content:space-between;gap:20px}.difficulty{border:1px solid #51777e;border-radius:20px;padding:10px 15px;white-space:nowrap}.game-layout{display:grid;grid-template-columns:260px minmax(0,1fr);gap:40px;margin-top:16px}.instructions h2{font-size:23px;line-height:1.2}.instructions h3{font-size:15px;margin-top:26px}.instructions p{font-size:14px}.instructions .secondary{width:100%;margin-top:12px}.text-button{background:none;border:0;color:#bdcfd4;text-decoration:underline;width:100%}.console{background:#12313d;border:1px solid #638d95;border-radius:20px;padding:26px;align-self:start;box-shadow:0 20px 60px #0003}.console-top{display:flex;justify-content:space-between;gap:12px;font-size:10px}progress{appearance:none;width:100%;height:5px;border:0;background:#31515b;border-radius:10px;margin:18px 0 28px}progress::-webkit-progress-bar{background:#31515b;border-radius:10px}progress::-webkit-progress-value{background:var(--mint);border-radius:10px}progress::-moz-progress-bar{background:var(--mint)}.puzzle{display:grid;grid-template-columns:minmax(0,1fr) 155px;gap:24px}#grid{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:3px;touch-action:none;user-select:none;align-self:start}#grid [role=row]{display:contents}.cell{padding:0;min-height:0;aspect-ratio:1;border:1px solid #fff0cb33;border-radius:5px;background:#f5f0df;color:#183842;font:600 clamp(12px,1.6vw,20px) 'Space Grotesk',sans-serif}.cell:hover{background:#d7efe4}.cell.selected{background:#ffdf9a;box-shadow:inset 0 0 0 2px #b67412}.cell.found{background:#7ae7cf;color:#103c32}.cell.hint{outline:3px solid #ffdf9a;outline-offset:0}.cell:focus-visible{position:relative;z-index:1;outline:3px solid #ffbb50;outline-offset:1px}.concepts h2{font-size:12px;text-transform:uppercase;letter-spacing:1px;margin:0 0 17px;color:#bdcfd4}.concepts ul{list-style:none;padding:0;margin:0;display:grid;gap:13px}.concepts li{font-size:16px}.concepts li.recovered{color:var(--mint)}.concepts li.recovered .word-label{text-decoration:line-through}.definition{display:block;font-size:11px;line-height:1.5;color:#bdcfd4;margin-top:4px}#feedback{min-height:28px;margin-bottom:0;color:var(--cream);font-size:14px}.complete{margin:30px 0 0;padding:30px;border:1px solid var(--mint);border-radius:18px;text-align:center;background:#173e42}.complete h2{font-size:32px;margin:12px}.complete .secondary{margin:10px}dialog{background:#12313d;color:#f8f3df;border:1px solid #7ae7cf;border-radius:16px;max-width:calc(100% - 32px);padding:28px}dialog::backdrop{background:#06151dcc}.dialog-actions{display:flex;gap:14px}footer{font-size:11px;letter-spacing:1.5px;color:#9bb7bf}footer span{letter-spacing:0;font-size:13px}@media(max-width:1050px){.game-layout{grid-template-columns:210px minmax(0,1fr);gap:24px}.puzzle{grid-template-columns:1fr}.concepts ul{grid-template-columns:repeat(3,1fr)}.console{padding:20px}}@media(max-width:700px){header>span{display:none}header{font-size:11px;padding:20px 5%}.heading{display:block}.difficulty{display:inline-block;margin-bottom:16px}.game-layout{grid-template-columns:1fr;gap:20px}.instructions .exi{display:none}.instructions h2{margin-top:0}.instructions p{margin:8px 0}.instructions h3{margin:16px 0 8px}.instructions .secondary{width:auto;margin-right:10px}.text-button{width:auto}.console{padding:16px;border-radius:14px}main{padding-top:30px}.cell{font-size:clamp(12px,3.6vw,22px)}.concepts ul{gap:12px}.concepts li{font-size:14px}.console-top{letter-spacing:1px}footer{flex-wrap:wrap}.briefing{margin-top:0}}@media(prefers-reduced-motion:no-preference){.primary,.secondary,.cell{transition:background .15s}}
+
+/* Let content reflow rather than clipping overflow at narrow widths or zoom. */
+main,.game-layout,.console,.puzzle,.concepts,.heading>*{min-width:0}
+header{flex-wrap:wrap}header>a:first-child{flex-shrink:0}
+.header-controls{flex-wrap:wrap;min-width:0}
+h1,h2,h3,p,a,button{overflow-wrap:anywhere}
+#grid{width:100%;-webkit-user-select:none;-webkit-touch-callout:none}
+.cell{position:relative;scroll-margin-block:24px}
+.cell.found{border:2px solid currentColor}
+.cell.found::after{content:'';position:absolute;left:25%;right:25%;bottom:9%;border-bottom:2px solid currentColor}
+.cell.selected{outline:2px dashed #624007;outline-offset:-4px}
+.cell:focus-visible{outline:3px solid #ffbb50;outline-offset:1px;box-shadow:0 0 0 3px #091d29;z-index:2}
+#game-title:focus{outline:none}
+.concepts .word-label{line-height:1.6}.definition{font-size:13px}
+.console-top{flex-wrap:wrap}.dialog-actions{flex-wrap:wrap}
+@media(max-width:700px){
+  .game-layout,.puzzle{grid-template-columns:minmax(0,1fr)}
+  .concepts ul{grid-template-columns:minmax(0,1fr)}
+  .concepts li{font-size:16px}
+  .cell{font-size:clamp(14px,4vw,22px);border-radius:3px}
+  #grid{gap:2px}
+  header .header-controls{justify-content:flex-start}
+  .briefing h1{font-size:clamp(38px,10vw,64px)}
+  .difficulty{white-space:normal;line-height:1.6}
+}
+@media(max-width:360px){
+  main{padding-inline:12px}.console{padding:10px}
+  .help-button{padding:10px 14px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+@media(forced-colors:active){
+  .cell.found{border:3px double ButtonText}
+  .cell.selected{outline:2px dashed Highlight}
+  .cell:focus-visible,.cell.hint{outline:3px solid Highlight}
+}
+
+/* Compact play surface and thumb-accessible controls for phones and tablets. */
+.game-tools{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.game-tools>.secondary{flex:1;min-width:90px}
+.recovered-state{font-size:12px}
+@media(max-width:1050px){
+  body{min-height:100svh}
+  header{padding:10px 16px;gap:8px;flex-wrap:nowrap}
+  header>span{display:none}
+  header>a:first-child{font-size:11px;letter-spacing:1px}
+  .header-controls{gap:8px;justify-content:flex-end}
+  .header-controls button{min-height:44px;padding:8px 10px;font-size:11px}
+  .header-controls a{font-size:11px}
+  main{padding:16px max(12px,env(safe-area-inset-left)) calc(94px + env(safe-area-inset-bottom));max-width:740px}
+  .briefing{margin:16px auto 0}
+  .briefing .exi{font-size:48px}
+  .briefing h1{font-size:clamp(36px,7vw,58px);margin:12px 0}
+  .briefing>p:not(.eyebrow){margin:14px auto;font-size:15px;line-height:1.55}
+  .briefing .primary{width:100%;max-width:360px;margin-top:12px;min-height:52px}
+  .heading{display:block;margin:0 0 12px}
+  .heading .eyebrow{margin:0 0 6px;font-size:10px}
+  .heading h1{font-size:clamp(23px,4vw,32px);letter-spacing:-.7px;line-height:1.2;margin:0}
+  .heading h1 br{display:none}
+  .heading h1 em::before{content:' '}
+  .difficulty{display:none}
+  .game-layout{display:block;margin:0}
+  .instructions{display:none}
+  .console{padding:14px;border-radius:16px}
+  .console-top{font-size:10px;letter-spacing:1px;gap:8px}
+  progress{height:6px;margin:10px 0 14px}
+  .puzzle{grid-template-columns:minmax(0,1fr);gap:12px}
+  #grid{width:min(100%,max(240px,calc(100svh - 370px)),520px);margin-inline:auto;gap:2px}
+  .cell{font-size:clamp(14px,3vw,23px);border-radius:4px}
+  .concepts h2{font-size:10px;margin:0 0 8px;letter-spacing:1px}
+  .concepts ul{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+  .concepts li{border:1px solid #638d95;border-radius:8px;background:#0c2530;padding:7px 4px;text-align:center;font-size:13px}
+  .concepts .word-label{line-height:1.3;white-space:nowrap}
+  .concepts .definition{display:none}
+  .recovered-state{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+  #selection-help{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%)}
+  .discovery{font-size:13px;min-height:0;line-height:1.45;margin-top:12px;padding:10px 12px}
+  #feedback{font-size:12px;min-height:0;line-height:1.4;margin:8px 0 0}
+  #completion-status{font-size:11px;line-height:1.4;margin:6px 0 0}
+  .game-tools{position:fixed;z-index:5;left:0;right:0;bottom:0;margin:0;padding:10px max(12px,env(safe-area-inset-right)) calc(10px + env(safe-area-inset-bottom));display:grid;grid-template-columns:1fr 1fr 1.25fr;gap:8px;background:#0c2530;border-top:1px solid #638d95;box-shadow:0 -6px 24px #0003}
+  .game-tools button{min-width:0;min-height:48px;font-size:13px;padding:10px 8px;touch-action:manipulation}
+  .game-tools .help-button{position:static;border-radius:9px;box-shadow:none;font-size:18px}
+  .help-button span{font-size:13px;margin-left:3px}
+  .help-panel{left:0;right:0;bottom:0;width:100%;max-height:85dvh;padding:20px max(20px,env(safe-area-inset-left)) calc(24px + env(safe-area-inset-bottom));border-radius:22px 22px 0 0;box-shadow:0 -20px 80px #0009;overscroll-behavior:contain}
+  .help-heading{position:sticky;top:-20px;padding-block:8px;background:#173a46}
+  .help-panel p{font-size:15px}
+  footer{display:none}
+  .complete{padding:20px;margin-top:16px}
+  .complete h2{font-size:26px}
+}
+@media(max-width:380px){
+  header{gap:6px;padding-inline:12px}
+  header>a:first-child{max-width:86px;line-height:1.4;flex-shrink:1}
+  .header-controls{gap:6px}
+  .header-controls a{max-width:80px;line-height:1.4}
+  .console{padding:10px}
+  .concepts li{font-size:12px}
+}

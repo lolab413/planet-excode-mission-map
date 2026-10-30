@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>System Reboot: Core Concepts | Planet ExCode</title>
+  <meta name="description" content="Recover six core concepts in a native Planet ExCode word search and help reboot Exi.">
+  <link rel="stylesheet" href="word-search.css">
+  <script type="module" src="word-search.js"></script>
+</head>
+<body>
+  <header><a href="./">✦ PLANET <strong>EXCODE</strong></a><span>SYSTEM RECOVERY</span><div class="header-controls"><button id="sound" class="secondary" aria-pressed="false">Sound off · Enable</button><a href="./">Back to mission map ↗</a></div></header>
+  <main>
+    <section id="briefing" class="briefing" aria-labelledby="briefing-title">
+      <p class="eyebrow">MISSION 1 / SYSTEM RECOVERY</p>
+      <div class="exi" aria-hidden="true">✳</div>
+      <h1 id="briefing-title">System Scan<br><em>Initiated.</em></h1>
+      <p class="subtitle">Core concepts detected…</p>
+      <p>Before Exi can come back online, key system concepts must be recovered. Every word you find brings Exi one step closer to full functionality.</p>
+      <button id="start" class="primary">Start system reboot →</button>
+      <p id="saved-note" class="small"></p>
+    </section>
+    <section id="game" hidden aria-labelledby="game-title">
+      <div class="heading"><div><p class="eyebrow">MISSION 1 / WORD SEARCH</p><h1 id="game-title" tabindex="-1">System Reboot:<br><em>Core Concepts</em></h1></div><span class="difficulty">LEVEL 01 · EXPLORER</span></div>
+      <div class="game-layout">
+        <aside class="instructions"><div class="exi" aria-hidden="true">✳</div><h2>Bring Exi back online.</h2><p>Exi’s core memory is waking up… but it’s fragmented.</p><p>Find six essential concepts hidden in the grid. These words power how systems think, respond, and grow.</p><h3>How to recover a word</h3><p>Select its first and last letters, or drag between them. Words run horizontally, vertically, or diagonally, in either direction.</p><p class="small">Keyboard: use arrow keys to move. Press Enter or Space to choose each endpoint. Escape clears your selection.</p></aside>
+        <div class="console"><div class="console-top"><span>EXI REBOOT METER</span><span id="count">0 / 6 RECOVERED</span></div><progress id="progress" max="6" value="0" aria-label="Exi reboot progress"></progress><div class="puzzle"><div id="grid" role="grid" aria-rowcount="10" aria-colcount="10" aria-label="Word search letter grid" aria-describedby="selection-help"></div><div class="concepts"><h2>Find all six concepts</h2><ul id="words"></ul></div></div><p id="selection-help" class="small">Tap the first and last letters, or drag between them. Keyboard: arrow keys to move; Enter or Space to select; Escape to clear.</p><div id="discovery" class="discovery" role="status" aria-live="polite" aria-atomic="true">Discover a concept to learn what it does.</div><p id="feedback" role="status" aria-live="polite" aria-atomic="true">System ready. Find your first concept.</p><p id="completion-status" class="small"></p><nav class="game-tools" aria-label="Word search controls"><button id="hint" class="secondary" aria-label="Hint: locate a starting letter">Hint</button><button id="restart" class="secondary">New board</button><button id="help" class="help-button" aria-expanded="false" aria-controls="help-panel" aria-label="Word search help">? <span>How to play</span></button></nav></div>
+      </div>
+      <section id="complete" class="complete" hidden aria-labelledby="complete-title"><p class="eyebrow">ALL CORE CONCEPTS RECOVERED</p><h2 id="complete-title">Exi is back online!</h2><p>You restored all six concepts. System reboot complete.</p><a class="primary" href="./">Return to mission map →</a><button id="replay" class="secondary">Play again</button></section>
+    </section>
+  </main>
+  <dialog id="restart-dialog" aria-labelledby="restart-title"><h2 id="restart-title">Start a new word search?</h2><p>This creates a freshly scrambled board and resets this round. Your earned completion stays saved.</p><div class="dialog-actions"><button id="cancel-restart" class="secondary" autofocus>Keep playing</button><button id="confirm-restart" class="primary">New board</button></div></dialog>
+  <aside id="help-panel" class="help-panel" aria-labelledby="help-title" hidden><div class="help-heading"><h2 id="help-title">Need a hand, explorer?</h2><button id="close-help" class="secondary" aria-label="Close help">×</button></div><p>Drag from the first letter to the last letter of a word, or tap each endpoint. Try looking in all eight directions, including backwards!</p><p>On a keyboard, move with arrow keys and choose endpoints with Enter or Space. Escape clears a selection.</p><p>Stuck? Tap <strong>Hint</strong> on the game controls. A gold outline and row and column numbers will guide you. Hints never reduce your progress.</p><p class="small">Your board resumes when you return. Replay creates a new scramble and keeps your completed achievement.</p></aside>
+  <footer>PLANET EXCODE <span>A little curiosity goes a long way.</span></footer>
+</body>
+</html>

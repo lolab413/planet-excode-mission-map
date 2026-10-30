@@ -32,6 +32,10 @@ const context = { window: {} };
 vm.runInNewContext(await readFile(resolve(source, 'mission-config.js'), 'utf8'), context);
 for (const [key, value] of Object.entries(context.window.PLANET_EXCODE_CONFIG)) {
   if (!value) continue;
+  if (key === 'wordSearchUrl' && value === './word-search.html') {
+    await stat(resolve(source, 'word-search.html'));
+    continue;
+  }
   const url = new URL(value);
   if (url.protocol !== 'https:' || url.username || url.password) throw new Error(`Use a public HTTPS URL for ${key}`);
 }

@@ -1,6 +1,6 @@
 # Planet ExCode - first prototype
 
-This package contains the mission map, Day/Night toggle, and activity chooser. It is separate from CoordinatePlaneLearningActivity. No game or lesson has been copied into it.
+This package contains the mission map, Day/Night toggle, and activity chooser. It includes the native System Reboot word search and remains separate from CoordinatePlaneLearningActivity.
 
 ## GitHub repository
 
@@ -36,21 +36,33 @@ To make the prototype accessible without signing in, open Vercel Project Setting
 - All application files and the mountain image are local static assets using relative paths.
 - Google Fonts is an optional external stylesheet; fallback fonts are supplied.
 - The Day/Night preference uses optional browser localStorage. There are no user accounts. Preferences are scoped to the new origin, so the old domain's saved choice does not transfer.
-- Word search opens the existing external Genially URL. Its availability remains controlled by Genially; this package does not recreate it.
-- Coordinate activity remains disabled until a published playable URL is supplied. No localhost link is included.
+- Word search opens the native `./word-search.html` activity. Previous Genially URL (reference only): https://view.genially.com/696fd4180faa26d59386f646.
+- Coordinate activity uses its separately published URL and retains independent completion and return tracking.
 - No runtime rewrite or authentication removal is needed. Vercel serves only dist/, not project metadata.
 
 ## Activity configuration
 
 Edit `public/mission-config.js`, then rebuild/redeploy:
 
-- `coordinateActivityUrl`: empty; Play remains disabled with “Activity link coming soon”.
-- `wordSearchUrl`: `https://view.genially.com/696fd4180faa26d59386f646`.
+- `coordinateActivityUrl`: `https://coordinate-plane-learning-activity.vercel.app/` (separate activity).
+- `wordSearchUrl`: `./word-search.html` (native activity).
+- Previous word search: https://view.genially.com/696fd4180faa26d59386f646 (reference only; no longer launched).
+
+The word search saves its board and discoveries under `planet-excode-system-reboot-core-concepts-progress-v1` and earned completion under `planet-excode-word-search-completed-v1`. Replay creates a fresh board without clearing earned completion. Coordinate Plane storage is independent.
 
 ## Local verification
 
-Use Node.js 24, then run `npm ci` and `npm run build`. Serve `dist/` using a static HTTP server. Verify the landing page loads without login, toggle Day/Night and reload, open Mission 1 from either control, confirm coordinate Play is disabled and word-search Play is enabled, and close with Close/Escape. Check desktop and mobile layouts.
+Use Node.js 24, then run:
 
-The build checks local asset references, JavaScript syntax, output byte parity, and public activity URL format, and rejects ChatGPT runtime URLs, localhost URLs, and replacement characters. It does not claim remote Genially availability or verify a Vercel deployment before one exists.
+```sh
+npm run build
+node scripts/test-word-search.mjs
+node scripts/test-mission-launch.mjs
+python -m http.server 4173 --bind 127.0.0.1 --directory dist
+```
+
+Open http://127.0.0.1:4173/ and launch Mission 1 > System Reboot. Check desktop and phone layouts, tap/drag/keyboard selection, hints, definitions, completion, replay, and return to map. Confirm Coordinate Plane remains a separate destination. Saved progress is scoped to the browser origin, so use the same hostname and port when resuming.
+
+The build checks local asset references, JavaScript syntax, output byte parity, and activity URL format (including the native word-search path). It rejects ChatGPT runtime URLs, localhost runtime URLs, and replacement characters. Automated interaction tests use a DOM fixture; they do not replace real-browser layout, touch, screen-reader, or audio testing. No deployment is implied by a local build.
 
 References: https://vercel.com/docs/builds/configure-a-build and https://vercel.com/docs/deployment-protection/methods-to-protect-deployments/vercel-authentication
